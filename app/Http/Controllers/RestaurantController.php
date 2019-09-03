@@ -27,6 +27,11 @@ class RestaurantController extends Controller
     }
 
     public function create(Request $request){
+        if(strlen($request->name)>128){
+            return response()->json([
+                "message" => "Restaurant name should be less than 128 characters"
+            ], 400);    
+        }
         if (is_null($request->name) || is_null($request->address) || is_null($request->logo)) {
             return response()->json([
                 "message" => "Data request is incomplete"

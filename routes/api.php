@@ -32,6 +32,7 @@ Route::get('order','OrderController@show');
 Route::get('order/{id}','OrderController@getByRestaurant');
 Route::post('order','OrderController@create');
 Route::put('/order/{id}','OrderController@update');
+Route::put('/order/done/{id}','OrderController@changeStatusOrder');
 Route::delete('/order/{id}','OrderController@delete');
 
 Route::get('cart/{id}','CartController@getByOrder');

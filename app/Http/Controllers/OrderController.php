@@ -108,9 +108,35 @@ class OrderController extends Controller
         }
     }
 
+    public function changeStatusOrder($id){
+        $find = Order::where('id', $id);
+        if ($find->exists()) {
+            $getFood = $find->get();                       
+            foreach ($getFood as $key) {
+                $data = Order::find($id);
+                $data->name = $key->name;
+                $data->restaurant_id = $key->restaurant_id;
+                $data->pickup = $key->pickup;
+                $data->request_notes = $key->request_notes;
+                $data->status = $key->status;
+                $data->order_status = "Success";
+                $data->save();
+                
+                return response()->json([
+                    "message" => "Data has been changed"
+                ], 200);
+            }
+        }
+        else {
+            return response()->json([
+                "message" => "Data not found"
+            ], 404);
+        }
+    }
+
     public function delete($id){
         if (Order::where('id', $id)->exists()) {
-            $cart = Cart::where('order_id', $id)
+            $cart = Cart::where('order_id', $id);
             $cart->delete();
 
             $data = Order::find($id);
