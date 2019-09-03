@@ -59,3 +59,12 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 * `/order/:id` -- (delete data order by id)
 * `/cart/:id` -- (delete data order list by id)
 * `/transaction/:id` -- (delete data transaction by id)
+
+##FLOW TRANSACTION
+1. The user searches for a list of foods from a particular restaurant
+2. The user creates a list of orders and the date they were taken
+3. The user creates a list of orders in one restaurant
+4. The vendor sees the recorded order data from the user
+5. Users take orders as scheduled and Users make transactions based on order data
+6. Vendors look at transaction and order recording data
+7. The vendor changes the order status data that the order success
