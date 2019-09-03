@@ -1,3 +1,4 @@
+<h1 align="center">RESTful OrderFood App</h1>
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -9,64 +10,61 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects.
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Requirements
+1. Composer
+2. Web Server (xampp)
+3. Postman
+4. Code Editor
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## How to Run the App ?
+1. Clone or download backend repository
+2. Open CMD or Terminal, enter to the app directory and Type `composer install`
+3. Copy file <b>.env.example</b>, paste and save it in a new file with the name <b>.env</b>
+4. Create database and setting connection database in file <b>.env</b>
+5. Type in the terminal `php artisan key:generate` to generate key app in your <b>.env</b>
+6. Type in the terminal `php artisan migrate:resfresh`. If successful several tables will appear in the database
+7. Then to run project type `php artisan serve` in your terminal
+8. After this, Open POSTMAN to Choose HTTP Method and enter request url.(ex. localhost:3000/notes)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## End Point List
+### 1. GET
+* `/restaurant` -- (get all data restaurant) 
+* `/restaurant?id=restaurant_id` -- (get data restaurant by id) 
+* `/food` -- (get all data food) 
+* `/food/:restaurant_id` -- (get data food by id restaurant)
+* `/food?id=food_id` -- (get data food by id)
+* `/order` -- (get all data order)
+* `/order?id=order_id` -- (get data order by id)
+* `/order/:restaurant_id` -- (get data order by id restaurant)
+* `/cart/:order_id` -- (get data order list by id order)
+* `/transaction/:restaurant_id` -- (get data transaction by id restaurant)
+### 2. POST
+* `/restaurant` -- (add new restaurant data)
+* `/food` -- (add new food data)
+* `/order` -- (add new order data)
+* `/cart` -- (add orders to the order list data)
+* `/transaction` -- (add new transaction data)
+### 3. PUT
+* `/restaurant/:id` -- (update data restaurant by id)
+* `/food/:id` -- (update data food by id)
+* `/order/:id` -- (update data order by id)
+* `/order/done/:id` -- (change status order by id)
+* `/cart/:id` -- (update data order list by id)
+### 4. DELETE
+* `/restaurant/:id` -- (delete data restaurant by id)
+* `/food/:id` -- (delete data food by id)
+* `/order/:id` -- (delete data order by id)
+* `/cart/:id` -- (delete data order list by id)
+* `/transaction/:id` -- (delete data transaction by id)
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##FLOW TRANSACTION
+1. The user searches for a list of foods from a particular restaurant
+2. The user creates a list of orders and the date they were taken
+3. The user creates a list of orders in one restaurant
+4. The vendor sees the recorded order data from the user
+5. Users take orders as scheduled and Users make transactions based on order data
+6. Vendors look at transaction and order recording data
+7. The vendor changes the order status data that the order success
